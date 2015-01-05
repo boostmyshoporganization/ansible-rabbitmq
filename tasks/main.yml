@@ -1,0 +1,27 @@
+---
+
+- name: Install rabbitMQ
+  apt: name=rabbitmq-server state=present
+  tags: rabbitmq
+
+- shell: rabbitmq-plugins list -E rabbitmq_management
+  register: rabbitmq_management
+  ignore_errors: True
+  no_log: True
+  tags: rabbitmq
+
+- name: Install rabbitMQ management
+  shell: rabbitmq-plugins enable rabbitmq_management && service rabbitmq restart
+  when: rabbitmq_management == ""
+  tags: rabbitmq
+
+- shell: rabbitmqadmin --help
+  register: rabbitmq_admin
+  ignore_errors: True
+  no_log: True
+  tags: rabbitmq
+
+- include: rabbitmqadmin.yml
+  when: rabbitmq_admin|failed
+  tags: rabbitmq
+
