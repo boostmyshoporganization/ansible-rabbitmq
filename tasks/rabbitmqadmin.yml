@@ -1,7 +1,7 @@
 ---
 
 - name: Install rabbitMQ Admin
-  shell: wget http://guest:guest@192.168.56.190:55672/cli/rabbitmqadmin
+  shell: wget http://guest:guest@localhost:55672/cli/rabbitmqadmin
   when: rabbitmq_management == ""
 
 - name: Move the rabbitMQ Admin
