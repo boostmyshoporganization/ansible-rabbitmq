@@ -11,7 +11,7 @@
   tags: rabbitmq
 
 - name: Install rabbitMQ management
-  shell: rabbitmq-plugins enable rabbitmq_management && service rabbitmq restart
+  shell: rabbitmq-plugins enable rabbitmq_management && service rabbitmq-server restart
   when: rabbitmq_management == ""
   tags: rabbitmq
 
