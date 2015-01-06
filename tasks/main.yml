@@ -4,7 +4,7 @@
   apt: name=rabbitmq-server state=present
   tags: rabbitmq
 
-- shell: rabbitmq-plugins list -E rabbitmq_management
+- file: src=/etc/rabbitmq/enabled_plugins state=file
   register: rabbitmq_management
   ignore_errors: True
   no_log: True
@@ -12,7 +12,7 @@
 
 - name: Install rabbitMQ management
   shell: rabbitmq-plugins enable rabbitmq_management && service rabbitmq-server restart
-  when: rabbitmq_management == ""
+  when: rabbitmq_management|failed
   tags: rabbitmq
 
 - shell: rabbitmqadmin --help
