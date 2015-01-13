@@ -18,4 +18,5 @@ Configuration
 
 ```yaml
 rabbitmq:
+  node_name: "main@localhost"
 ```
