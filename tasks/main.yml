@@ -9,10 +9,9 @@
   notify: restart rabbitmq-server
   tags: rabbitmq
 
-- file: src=/etc/rabbitmq/enabled_plugins state=file
+- file: path=/etc/rabbitmq/enabled_plugins state=file
   register: rabbitmq_management
   ignore_errors: True
-  no_log: True
   tags: rabbitmq
 
 - name: Install rabbitMQ management

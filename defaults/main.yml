@@ -1,0 +1,4 @@
+---
+
+rabbitmq:
+  node_name: "main@localhost"
